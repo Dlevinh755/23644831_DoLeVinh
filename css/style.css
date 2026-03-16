@@ -1,117 +1,176 @@
-body{
-
-    background-color:#f0f0f0;
-
-    font-family:Arial;
-
+:root {
+    --bg: #eef2f7;
+    --card: #ffffff;
+    --text: #16324f;
+    --muted: #4d6075;
+    --accent: #0a7ea4;
+    --accent-2: #f2a541;
+    --line: #d9e2ec;
 }
 
-/* Card */
-
-.profile-card{
-
-    width:400px;
-
-    background:white;
-
-    margin:auto;
-
-    margin-top:50px;
-
-    padding:25px;
-
-    border-radius:10px;
-
-    text-align:center;
-
-    box-shadow:0px 0px 10px gray;
-
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Avatar */
-
-#avatar{
-
-    width:150px;
-
-    height:150px;
-
-    border-radius:50%;
-
-    object-fit:cover;
-
-    margin-bottom:15px;
-
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text);
+    background: radial-gradient(circle at 10% 10%, #ffffff 0%, #f6f9fc 45%, #e9eff6 100%), linear-gradient(135deg, #edf3fa 0%, #e6eef8 100%);
+    min-height: 100vh;
 }
 
-/* Info */
-
-#full-name{
-
-    font-size:20px;
-
-    font-weight:bold;
-
+.page {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 28px 16px;
 }
 
-#student-id{
-
-    display:none;
-
+.card {
+    width: min(920px, 100%);
+    background: var(--card);
+    border-radius: 16px;
+    border: 1px solid var(--line);
+    box-shadow: 0 12px 24px rgba(225, 227, 230, 0.14);
+    overflow: hidden;
 }
 
-#email{
-
-    color:gray;
-
+.card-header {
+    padding: 20px 24px;
+    background: linear-gradient(120deg, #2b2c2c 55%, #4db3cb);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
 }
 
-/* Links */
-
-.links{
-
-    margin-top:15px;
-
+.card-header h1 {
+    font-size: clamp(1.15rem, 2vw, 1.55rem);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
 }
 
-.links a{
-
-    text-decoration:none;
-
-    color:blue;
-
+.language-switch {
+    display: flex;
+    gap: 10px;
 }
 
-.links a:hover{
-
-    color:red;
-
+.language-switch a {
+    text-decoration: none;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 0.9rem;
 }
 
-/* Hobbies */
-
-.hobby-section{
-
-    margin-top:20px;
-
+.language-switch a[aria-current="page"] {
+    background: #ffffff;
+    color: var(--accent);
+    font-weight: 600;
 }
 
-#hobbies{
-
-    list-style:none;
-
-    padding:0;
-
+.profile-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 22px;
+    padding: 24px;
 }
 
-#hobbies li{
+.avatar-box {
+    align-self: start;
+    background: #eceef0;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 14px;
+}
 
-    background:#e8e8e8;
+.avatar-box img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+}
 
-    margin:5px;
+.details {
+    display: grid;
+    gap: 11px;
+}
 
-    padding:8px;
+.info-row {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 10px;
+    align-items: start;
+    border-bottom: 1px dashed var(--line);
+    padding: 8px 0;
+}
 
-    border-radius:5px;
+.label {
+    color: var(--muted);
+    font-weight: 600;
+}
 
+.hidden-id {
+    display: none;
+}
+
+.links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+.links a {
+    text-decoration: none;
+    color: #ffffff;
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.links a:hover {
+    background: #a8a8a8;
+    transform: translateY(-2px);
+}
+
+.hobby-section {
+    margin-top: 8px;
+}
+
+.hobby-section h2 {
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+    color: var(--accent-2);
+}
+
+#hobbies ul {
+    margin-left: 20px;
+    display: grid;
+    gap: 5px;
+}
+
+@media (max-width: 760px) {
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .profile-layout {
+        grid-template-columns: 1fr;
+        padding: 18px;
+    }
+    .avatar-box {
+        max-width: 240px;
+    }
+    .info-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+    }
 }
